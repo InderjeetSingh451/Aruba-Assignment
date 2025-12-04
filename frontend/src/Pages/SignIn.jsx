@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -93,9 +94,9 @@ const SignIn = () => {
 
         <p className="mt-6 text-center text-xs text-gray-500">
           Already have an account?{" "}
-          <a href="/login" className="text-indigo-400 hover:text-indigo-300">
+          <Link to={"/login"} className="text-indigo-400 hover:text-indigo-300">
             Login here
-          </a>
+          </Link>
         </p>
       </div>
     </div>
@@ -103,6 +104,7 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
 
 
 
