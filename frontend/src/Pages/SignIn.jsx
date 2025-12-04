@@ -14,7 +14,7 @@ const SignIn = () => {
     setError("");
     try {
       const res = await axios.post(
-        "https://aruba-assignment-backend.onrender.com/api/user/sign",
+        "https://aruba-assignment-backend.onrender.com/api/user/sign-in",
         {
           name,
           email,
@@ -103,4 +103,5 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
 
