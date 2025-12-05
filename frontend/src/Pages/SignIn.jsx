@@ -34,7 +34,7 @@ const SignIn = () => {
       setIsSign("Signing-up.....");
       navigate("/");
     } catch (err) {
-      setIsSign("Signing-up.....");
+      setIsSign("Sign-up");
       setError(err.response?.data?.message || "Something went wrong");
     }
   };
@@ -109,6 +109,7 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
 
 
 
