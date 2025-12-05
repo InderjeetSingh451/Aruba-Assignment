@@ -23,13 +23,17 @@ const Login = () => {
         }
       );
 
-      if (!res.data.success) return setError(res.data.message);
+      if (!res.data.success) {
+        setIsLogin("Login");
+        return setError(res.data.message);
+      }
 
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
       
       navigate("/");
     } catch (err) {
+      setIsLogin("Login");
       setError(err.response?.data?.message || "Something went wrong");
     }
   };
@@ -97,6 +101,7 @@ const Login = () => {
 };
 
 export default Login;
+
 
 
 
