@@ -9,10 +9,11 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
+  const [isSign,setIsSign] = useState("Sign-up");
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setIsSign("Signing-up.....");
     try {
       const res = await axios.post(
         "https://aruba-assignment-backend.onrender.com/api/user/sign",
@@ -23,13 +24,17 @@ const SignIn = () => {
         }
       );
 
-      if (!res.data.success) return setError(res.data.message);
+      if (!res.data.success){
+        setIsSign("Signing-up.....");
+        return setError(res.data.message);
+      }
 
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
-
+      setIsSign("Signing-up.....");
       navigate("/");
     } catch (err) {
+      setIsSign("Signing-up.....");
       setError(err.response?.data?.message || "Something went wrong");
     }
   };
@@ -88,7 +93,7 @@ const SignIn = () => {
             type="submit"
             className="w-full mt-2 bg-indigo-600 hover:bg-indigo-500 text-sm font-medium text-white py-2.5 rounded-lg transition shadow-md shadow-indigo-500/30"
           >
-            Sign Up
+            {isSign}
           </button>
         </form>
 
@@ -104,6 +109,7 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
 
 
 
