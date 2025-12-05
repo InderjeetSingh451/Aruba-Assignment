@@ -25,7 +25,7 @@ const SignIn = () => {
       );
 
       if (!res.data.success){
-        setIsSign("Signing-up.....");
+        setIsSign("Sign-up");
         return setError(res.data.message);
       }
 
@@ -109,6 +109,7 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
 
 
 
