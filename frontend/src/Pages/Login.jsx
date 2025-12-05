@@ -8,11 +8,12 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const [isLogin,setIsLogin] = useState("Login");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-
+    setIsLogin("Login....");
     try {
       const res = await axios.post(
         "https://aruba-assignment-backend.onrender.com/api/user/login",
@@ -26,7 +27,7 @@ const Login = () => {
 
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
-
+      
       navigate("/");
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong");
@@ -80,7 +81,7 @@ const Login = () => {
             type="submit"
             className="w-full mt-2 bg-indigo-600 hover:bg-indigo-500 text-sm font-medium text-white py-2.5 rounded-lg transition shadow-md shadow-indigo-500/30"
           >
-            Login
+            {isLogin}
           </button>
         </form>
 
@@ -96,5 +97,6 @@ const Login = () => {
 };
 
 export default Login;
+
 
 
